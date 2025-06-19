@@ -91,7 +91,6 @@ async def update_book(book: BookRequest, book_id: int):
     
     for i in range(len(BOOKS)):
         if BOOKS[i].id == book_id:
-            print(BOOKS[i])
             BOOKS[i] = book
             BOOKS[i].id = book_id
             book_changed = True
@@ -102,10 +101,8 @@ async def update_book(book: BookRequest, book_id: int):
 @app.delete("/books/{book_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_book(book_id: int = Path(gt=0)):
     book_changed = False
-    print(book_id)
     for i in range(len(BOOKS)):
         if BOOKS[i].id == book_id:
-            print(BOOKS[i])
             BOOKS.pop(i)
             book_changed = True
             break
